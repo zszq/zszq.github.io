@@ -207,8 +207,7 @@
 <p>完整原型链：</p>
 <p><img src="https://img-blog.csdn.net/20180516105049266?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0MzU3NzY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
 <p>难点：<br>1.Function构造函数可以用Function.<strong>proto</strong>来访问Function.prototype. 这是因为Function构造函数的构造函数是他本身，作为实例化对象的角色来访问，可行。<br>2.任何函数都是函数，他都继承Function的所有属性和方法，而Function是内置的构造函数，也是对象，都是继承Object的所有属性和方法。</p>
-<p>推荐学习笔记：</p>
-<p>初学必看：<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">Javascript 面向对象编程      http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html</a></p>
+<h3 id="推荐学习笔记："><a href="#推荐学习笔记：" class="headerlink" title="推荐学习笔记："></a>推荐学习笔记：</h3><p>初学必看：<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">Javascript 面向对象编程      http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html</a></p>
 <p><a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank" rel="noopener">深入理解javascript原型和闭包（完结）      https://www.cnblogs.com/wangfupeng1988/p/3977924.html</a></p>
 <p>部分资料来自网络，如有侵权，联系删除。<strong>转载请注明出处！</strong></p>
 
@@ -299,7 +298,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript原型"><span class="toc-text">JavaScript原型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#构造函数-就是与-‘new’-运算符一起使用用来创建对象并初始化对象的‘函数’。"><span class="toc-text">构造函数 就是与 ‘new’ 运算符一起使用用来创建对象并初始化对象的‘函数’。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实例化对象-就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。"><span class="toc-text">实例化对象 就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原型-prototype和proto"><span class="toc-text">原型 prototype和proto</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#constructor属性"><span class="toc-text">constructor属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原型链-就是依托proto和prototype连接起来的"><span class="toc-text">原型链 就是依托proto和prototype连接起来的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#继承-js继承的几种方法-参考链接第二章更详细-："><span class="toc-text">继承  js继承的几种方法(参考链接第二章更详细)：</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript原型"><span class="toc-text">JavaScript原型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#构造函数-就是与-‘new’-运算符一起使用用来创建对象并初始化对象的‘函数’。"><span class="toc-text">构造函数 就是与 ‘new’ 运算符一起使用用来创建对象并初始化对象的‘函数’。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实例化对象-就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。"><span class="toc-text">实例化对象 就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原型-prototype和proto"><span class="toc-text">原型 prototype和proto</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#constructor属性"><span class="toc-text">constructor属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原型链-就是依托proto和prototype连接起来的"><span class="toc-text">原型链 就是依托proto和prototype连接起来的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#继承-js继承的几种方法-参考链接第二章更详细-："><span class="toc-text">继承  js继承的几种方法(参考链接第二章更详细)：</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#推荐学习笔记："><span class="toc-text">推荐学习笔记：</span></a></li>
         
     </div>
 </aside>
