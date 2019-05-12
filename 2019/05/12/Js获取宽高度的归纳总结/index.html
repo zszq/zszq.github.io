@@ -16,10 +16,16 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-    <meta name="keywords" content="doc">
+    <meta name="keywords" content="js">
 
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...">
+    <meta name="description" content="Js获取宽高度的归纳总结在js中的描述宽高的可以细分有22种。
+
+window.innerWidth //除去菜单栏的窗口宽度
+
+window.innerHeight//除去菜单栏的窗口高度
+
+...">
 
 
 
@@ -31,7 +37,7 @@
     <!--Title-->
 
 
-<title>Hello World | 张雷的博客</title>
+<title>Js获取宽高度的归纳总结 | 张雷的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="张雷的博客" type="application/atom+xml">
@@ -140,16 +146,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Hello World">
+        <h1 id="Js获取宽高度的归纳总结">
             
-	            Hello World
+	            Js获取宽高度的归纳总结
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            
+            <a class="category-link" href="/categories/前端/">前端</a>
         </span>
     
 
@@ -158,7 +164,7 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/doc/">doc</a>
+                    <a class="tag-link" href="/tags/js/">js</a>
                 
             </span>
         </span>
@@ -168,7 +174,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/01/24</span>
+            <span class="date-meta">2019/05/12</span>
         </span>
         
     
@@ -178,15 +184,96 @@
     </div>
     
     <div class="post-body post-content">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="Js获取宽高度的归纳总结"><a href="#Js获取宽高度的归纳总结" class="headerlink" title="Js获取宽高度的归纳总结"></a><a href="https://www.cnblogs.com/itdansan/p/8116273.html" target="_blank" rel="noopener">Js获取宽高度的归纳总结</a></h2><p>在js中的描述宽高的可以细分有22种。</p>
+<ol>
+<li><p><strong>window.innerWidth //除去菜单栏的窗口宽度</strong></p>
+</li>
+<li><p><strong>window.innerHeight//除去菜单栏的窗口高度</strong></p>
+</li>
+<li><p><strong>window.outerWidth//包括菜单栏的窗口宽度</strong></p>
+</li>
+<li><p><strong>window.outerHeight//包括菜单栏的窗口宽度</strong></p>
+</li>
+<li><p><strong>window.screen.height//电脑屏幕的高度</strong></p>
+</li>
+<li><p><strong>window.screen.width//电脑屏幕的宽度</strong></p>
+</li>
+<li><p><strong>window.screen.availHeight//电脑屏幕的可利用高度</strong></p>
+</li>
+<li><p><strong>window.screen.availWidth//电脑屏幕的可利用宽度</strong></p>
+</li>
+<li><p><strong>window.screenTop//浏览器距离屏幕的高度</strong></p>
+</li>
+<li><p><strong>window.screenLeft//浏览器距离屏幕的宽度</strong></p>
+</li>
+</ol>
+<ol start="11">
+<li><p><strong>document.body.clientWidth//指元素的自身宽度（包括padding）</strong></p>
+</li>
+<li><p><strong>document.body.clientHeight//指元素的自身的高度（包括padding）</strong></p>
+</li>
+<li><p><strong>document.body.clientLeft//子级div内容位置到父级内容区域的宽度距离(即border值)</strong></p>
+</li>
+<li><p><strong>document.body.clientTop//子级div内容位置到父级内容区域的高度距离(即border值)</strong></p>
+</li>
+<li><p><strong>document.body.offsetWidth//指定元素的宽度（包括padding，border和内容）</strong></p>
+</li>
+<li><p><strong>document.body.offsetHeight//指定元素的高度（包括padding，border和内容）</strong></p>
+</li>
+<li><p><strong>document.body.offsetTop//距离父级元素的高度</strong></p>
+</li>
+<li><p><strong>document.body.offsetLeft//距离父级元素的宽度</strong></p>
+</li>
+<li><p><strong>document.body.scrollWidth//获取的是文档的宽度（当指定的宽度小于浏览器窗口的时候，为浏览器的宽度）</strong></p>
+</li>
+<li><p><strong>document.body.scrollHeight//获取的是文档的高度（当指定的高度小于浏览器窗口的时候，为浏览器的高度）</strong></p>
+</li>
+<li><p><strong>document.body.scrollTop//文档被滚动上去的时候（即滚动条往上滚动的距离）</strong></p>
+</li>
+<li><p><strong>document.body.scrollLeft//文档被滚动右去的时候（即滚动条往右滚动的距离）</strong></p>
+</li>
+</ol>
+<p>看起来有点怕怕，但我们细分可以很清晰的分清楚他们</p>
+<ul>
+<li>width和height的都是值元素或窗口等的宽高，top和left表示的是到相对元素的距离</li>
+<li>client,offset,scrollh和screen都分别有width，height，top和left</li>
+<li>最后就是区别窗口和屏幕的宽高和元素的宽高</li>
+</ul>
+<p>我们先从上往下去分析每一个的作用</p>
+<h3 id="innerHeight-Width"><a href="#innerHeight-Width" class="headerlink" title="innerHeight/Width"></a>innerHeight/Width</h3><h3 id="outerHeight-Width"><a href="#outerHeight-Width" class="headerlink" title="outerHeight/Width"></a>outerHeight/Width</h3><h3 id="Screen屏幕宽高"><a href="#Screen屏幕宽高" class="headerlink" title="Screen屏幕宽高"></a>Screen屏幕宽高</h3><p>首先我们先分清楚widnow和document的区别<br> window 整个窗口<br> document 除了顶头的菜单栏<br> document对象是window对象的一部分</p>
+<h3 id="offset"><a href="#offset" class="headerlink" title="offset"></a>offset</h3><p>document.body.offsetWidth<br>document.body.offsetHeight<br>指定元素的border+padding+内容的宽度和高度</p>
+<p>如果没有padding和border<br>offsetWidth = clientWidth</p>
+<p>兼容性问题<br>IE6/7中（微软已经不提供支持）<br>offsetLeft = (offsetParent的padding-left)+(当前元素的margin-left)</p>
+<p>IE8以上<br>offsetLeft = (offsetParent的margin-left)+(当前元素的margin-left)</p>
+<p>火狐中<br>offsetLeft = (offsetParent的margin-left)+(当前元素的margin-left)+(offsetParent的padding-left)</p>
+<h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><p>指定元素的宽度和高度 即内容+padding</p>
+<p>如果没有滚动条，即元素本身设定的宽度<br>如果出现滚动条，滚动条会遮盖元素宽高，那么，该属性就是其本来宽高减去滚动条的宽度<br>console.log( document.body.clientHeight);<br>console.log(document.body.clientWidth);</p>
+<p>读取元素border的宽度和高度（子级内容区域到父级内容区域的距离）<br>document.body.clientLeft<br>document.body.clientTop</p>
+<h3 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h3><p>谷歌浏览器下</p>
+<ul>
+<li>当指定的宽高小于浏览器窗口的时候<ul>
+<li>scrollWidth为浏览器的宽度</li>
+<li>scrollHeight为浏览器的高度</li>
+</ul>
+</li>
+<li>当给的宽高大于浏览器窗口，且内容小于给定的宽高时<ul>
+<li>scrollWidth给定的宽度+padding、margin和border</li>
+<li>scrollHeight给定的宽度+padding、margin和border</li>
+</ul>
+</li>
+<li>当给定的宽高大于浏览器窗口，且内容大于给定的宽高<ul>
+<li>scrollWidth内容宽度+所有的padding,margin和border</li>
+<li>scrollHeight内容高度+所有的padding,margin和border</li>
+</ul>
+</li>
+</ul>
+<p>属性是可读写的</p>
+<p>指当元素其中的内容超出其宽高的时候，元素被卷起的高度和宽度</p>
+<h3 id="懒加载思路"><a href="#懒加载思路" class="headerlink" title="懒加载思路"></a>懒加载思路</h3><p>在还没有这个技术的出现时，页面的所有内容和图片，都会在访问时一次性的加载出来，对于浏览器和服务器都是一种负担，如果想百度图片这样的图库，用手机来看，多少流量都是浪费。这样的用户体验不仅差，还给服务器增加负担。所以懒加载技术才酝酿出来。</p>
+<p>懒加载技术的要点是通过滚动事件触发判断</p>
+<p>元素到顶部的距离小于       &lt;=      可视区域 client（满足条件后触发加载后台内容）</p>
+<p>底部加载技术<br>scrollTop+可视区域 == 网页高度 scrollHeight（满足条件后触发加载后台内容）</p>
+<p>部分资料来自网络，如有侵权，联系删除。<strong>转载请注明出处！</strong></p>
 
     </div>
     
@@ -224,11 +311,16 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/01/25/resume/" class="pre-post btn btn-default" title="我的简历">
+        <a href="/2019/05/12/css文字超出省略号/" class="pre-post btn btn-default" title="使用文字省略号的几种情况">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">我的简历</span>
+            <span class="hidden-xs">使用文字省略号的几种情况</span>
         </a>
     
+    
+        <a href="/2019/05/12/javascript数组去重10种方法/" class="next-post btn btn-default" title="javascript数组去重的10种方法">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">javascript数组去重的10种方法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
     
 </div>
 
@@ -270,7 +362,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Js获取宽高度的归纳总结"><span class="toc-text">Js获取宽高度的归纳总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#innerHeight-Width"><span class="toc-text">innerHeight/Width</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#outerHeight-Width"><span class="toc-text">outerHeight/Width</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Screen屏幕宽高"><span class="toc-text">Screen屏幕宽高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#offset"><span class="toc-text">offset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#client"><span class="toc-text">client</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scroll"><span class="toc-text">scroll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#懒加载思路"><span class="toc-text">懒加载思路</span></a></li></ol></li></ol>
         
     </div>
 </aside>

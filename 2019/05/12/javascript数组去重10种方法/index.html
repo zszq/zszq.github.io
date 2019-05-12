@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="张雷的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="js">
+
+
+    <meta name="description" content="javascript数组去重的10种方法方法1: 思路： 定义一个新数组， 并存放原数组的第一个元素， 然后将元素组一一和新数组的元素对比， 若不同则存放在新数组中。12345678910111...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>javascript数组去重的10种方法 | 张雷的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="张雷的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="./favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="zszq">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 实现技术的弯道超车 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">张雷的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/简历"><i class="fa "></i>一份简历</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="javascript数组去重的10种方法">
+            
+	            javascript数组去重的10种方法
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/前端/">前端</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/js/">js</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/05/12</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="javascript数组去重的10种方法"><a href="#javascript数组去重的10种方法" class="headerlink" title="javascript数组去重的10种方法"></a>javascript数组去重的10种方法</h1><h2 id="方法1-思路：-定义一个新数组，-并存放原数组的第一个元素，-然后将元素组一一和新数组的元素对比，-若不同则存放在新数组中。"><a href="#方法1-思路：-定义一个新数组，-并存放原数组的第一个元素，-然后将元素组一一和新数组的元素对比，-若不同则存放在新数组中。" class="headerlink" title="方法1: 思路： 定义一个新数组， 并存放原数组的第一个元素， 然后将元素组一一和新数组的元素对比， 若不同则存放在新数组中。"></a>方法1: 思路： 定义一个新数组， 并存放原数组的第一个元素， 然后将元素组一一和新数组的元素对比， 若不同则存放在新数组中。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [arr[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> repeat = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; res.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] === res[j]) &#123;</span><br><span class="line">                repeat = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!repeat) &#123;</span><br><span class="line">            res.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法一---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法2-思路：-先将原数组排序，-在与相邻的进行比较，-如果不同则存入新数组。"><a href="#方法2-思路：-先将原数组排序，-在与相邻的进行比较，-如果不同则存入新数组。" class="headerlink" title="方法2: 思路： 先将原数组排序， 在与相邻的进行比较， 如果不同则存入新数组。"></a>方法2: 思路： 先将原数组排序， 在与相邻的进行比较， 如果不同则存入新数组。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique2</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr2 = arr.sort();</span><br><span class="line">    <span class="keyword">var</span> res = [arr2[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; arr2.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr2[i] !== res[res.length - <span class="number">1</span>]) &#123;</span><br><span class="line">            res.push(arr2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法二---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique2([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法3-利用对象属性存在的特性，-如果没有该属性则存入新数组。"><a href="#方法3-利用对象属性存在的特性，-如果没有该属性则存入新数组。" class="headerlink" title="方法3: 利用对象属性存在的特性， 如果没有该属性则存入新数组。"></a>方法3: 利用对象属性存在的特性， 如果没有该属性则存入新数组。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique3</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!obj[arr[i]]) &#123;</span><br><span class="line">            obj[arr[i]] = <span class="number">1</span>;</span><br><span class="line">            res.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法三---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique3([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法4-利用数组的indexOf下标属性来查询。"><a href="#方法4-利用数组的indexOf下标属性来查询。" class="headerlink" title="方法4: 利用数组的indexOf下标属性来查询。"></a>方法4: 利用数组的indexOf下标属性来查询。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique4</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.indexOf(arr[i]) == <span class="number">-1</span>) &#123;</span><br><span class="line">            res.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法四---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique4([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法5-利用数组原型对象上的includes方法。"><a href="#方法5-利用数组原型对象上的includes方法。" class="headerlink" title="方法5: 利用数组原型对象上的includes方法。"></a>方法5: 利用数组原型对象上的includes方法。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique5</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!res.includes(arr[i])) &#123; <span class="comment">// 如果res新数组包含当前循环item</span></span><br><span class="line">            res.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法五---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique5([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法6-利用数组原型对象上的-filter-和-includes方法。"><a href="#方法6-利用数组原型对象上的-filter-和-includes方法。" class="headerlink" title="方法6: 利用数组原型对象上的 filter 和 includes方法。"></a>方法6: 利用数组原型对象上的 filter 和 includes方法。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique6</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    res = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res.includes(item) ? <span class="string">''</span> : res.push(item);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法六---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique6([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法7-利用数组原型对象上的-forEach-和-includes方法。"><a href="#方法7-利用数组原型对象上的-forEach-和-includes方法。" class="headerlink" title="方法7: 利用数组原型对象上的 forEach 和 includes方法。"></a>方法7: 利用数组原型对象上的 forEach 和 includes方法。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique7</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">        res.includes(item) ? <span class="string">''</span> : res.push(item);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法七---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique7([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法8-利用数组原型对象上的-splice-方法。"><a href="#方法8-利用数组原型对象上的-splice-方法。" class="headerlink" title="方法8: 利用数组原型对象上的 splice 方法。"></a>方法8: 利用数组原型对象上的 splice 方法。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique8</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i,</span><br><span class="line">        j,</span><br><span class="line">        len = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] == arr[j]) &#123;</span><br><span class="line">                arr.splice(j, <span class="number">1</span>);</span><br><span class="line">                len--;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法八---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique8([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法9-利用数组原型对象上的-lastIndexOf-方法。"><a href="#方法9-利用数组原型对象上的-lastIndexOf-方法。" class="headerlink" title="方法9: 利用数组原型对象上的 lastIndexOf 方法。"></a>方法9: 利用数组原型对象上的 lastIndexOf 方法。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique9</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        res.lastIndexOf(arr[i]) !== <span class="number">-1</span> ? <span class="string">''</span> : res.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法九---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique9([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<h2 id="方法10-利用-ES6的set-方法。"><a href="#方法10-利用-ES6的set-方法。" class="headerlink" title="方法10: 利用 ES6的set 方法。"></a>方法10: 利用 ES6的set 方法。</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">javascript</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique10</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Set数据结构，它类似于数组，其成员的值都是唯一的</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr)); <span class="comment">// 利用Array.from将Set结构转换成数组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'------------方法十---------------'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(unique10([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>
+<p>部分资料来自网络，如有侵权，联系删除。<strong>转载请注明出处！</strong></p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay300x300.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wechat300x300.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="tencent://message/?uin=1217052251&Site=blog&Menu=yes" target="_blank">zszq</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/05/12/Js获取宽高度的归纳总结/" class="pre-post btn btn-default" title="Js获取宽高度的归纳总结">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Js获取宽高度的归纳总结</span>
+        </a>
+    
+    
+        <a href="/2019/05/12/JavaScript原型/" class="next-post btn btn-default" title="JavaScript原型">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">JavaScript原型</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: '01wLsc0KBEM6T8k7v1kJRv3l-gzGzoHsz',
+            appKey: 'VhIDfwEQSpGRWvd8z5tDViJ9',
+            placeholder: '有什么问题请给我留言',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript数组去重的10种方法"><span class="toc-text">javascript数组去重的10种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1-思路：-定义一个新数组，-并存放原数组的第一个元素，-然后将元素组一一和新数组的元素对比，-若不同则存放在新数组中。"><span class="toc-text">方法1: 思路： 定义一个新数组， 并存放原数组的第一个元素， 然后将元素组一一和新数组的元素对比， 若不同则存放在新数组中。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2-思路：-先将原数组排序，-在与相邻的进行比较，-如果不同则存入新数组。"><span class="toc-text">方法2: 思路： 先将原数组排序， 在与相邻的进行比较， 如果不同则存入新数组。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法3-利用对象属性存在的特性，-如果没有该属性则存入新数组。"><span class="toc-text">方法3: 利用对象属性存在的特性， 如果没有该属性则存入新数组。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法4-利用数组的indexOf下标属性来查询。"><span class="toc-text">方法4: 利用数组的indexOf下标属性来查询。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法5-利用数组原型对象上的includes方法。"><span class="toc-text">方法5: 利用数组原型对象上的includes方法。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法6-利用数组原型对象上的-filter-和-includes方法。"><span class="toc-text">方法6: 利用数组原型对象上的 filter 和 includes方法。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法7-利用数组原型对象上的-forEach-和-includes方法。"><span class="toc-text">方法7: 利用数组原型对象上的 forEach 和 includes方法。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法8-利用数组原型对象上的-splice-方法。"><span class="toc-text">方法8: 利用数组原型对象上的 splice 方法。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法9-利用数组原型对象上的-lastIndexOf-方法。"><span class="toc-text">方法9: 利用数组原型对象上的 lastIndexOf 方法。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法10-利用-ES6的set-方法。"><span class="toc-text">方法10: 利用 ES6的set 方法。</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019.1.24
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

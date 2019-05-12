@@ -16,12 +16,10 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-    <meta name="keywords" content="doc">
+    <meta name="keywords" content="css">
 
 
-    <meta name="description" content="test
-
-">
+    <meta name="description" content="CSS强制英文、中文换行与不换行示例说明123456789.p1&#123; word-break:break-all; width:150px;&#125;   /*只对英文起作用，以字母作为...">
 
 
 
@@ -33,7 +31,7 @@
     <!--Title-->
 
 
-<title>test | 张雷的博客</title>
+<title>CSS强制英文、中文换行与不换行 | 张雷的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="张雷的博客" type="application/atom+xml">
@@ -142,9 +140,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="test">
+        <h1 id="CSS强制英文、中文换行与不换行">
             
-	            test
+	            CSS强制英文、中文换行与不换行
             
         </h1>
         <div class="post-meta">
@@ -160,7 +158,7 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/doc/">doc</a>
+                    <a class="tag-link" href="/tags/css/">css</a>
                 
             </span>
         </span>
@@ -170,7 +168,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/01/25</span>
+            <span class="date-meta">2019/05/12</span>
         </span>
         
     
@@ -180,8 +178,18 @@
     </div>
     
     <div class="post-body post-content">
-        <p>test</p>
-<p><img src="https://img-blog.csdn.net/20180425164137123?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2NDM3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+        <h2 id="CSS强制英文、中文换行与不换行"><a href="#CSS强制英文、中文换行与不换行" class="headerlink" title="CSS强制英文、中文换行与不换行"></a><a href="https://www.cnblogs.com/zhangshuda/p/7640422.html" target="_blank" rel="noopener">CSS强制英文、中文换行与不换行</a></h2><h3 id="示例说明"><a href="#示例说明" class="headerlink" title="示例说明"></a>示例说明</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.p1</span>&#123; <span class="attribute">word-break</span>:break-all; <span class="attribute">width</span>:<span class="number">150px</span>;&#125;   <span class="comment">/*只对英文起作用，以字母作为换行依据*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.p2</span>&#123; <span class="attribute">word-wrap</span>:break-word; <span class="attribute">width</span>:<span class="number">150px</span>;&#125;   <span class="comment">/*--只对英文起作用，以单词作为换行依据*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.p3</span>&#123;<span class="attribute">white-space</span>:pre-wrap; <span class="attribute">width</span>:<span class="number">150px</span>;&#125;   <span class="comment">/*只对中文起作用，强制换行*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.p4</span>&#123;<span class="attribute">white-space</span>:nowrap; <span class="attribute">width</span>:<span class="number">10px</span>;&#125;   <span class="comment">/*强制不换行，都起作用*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.p5</span>&#123;<span class="attribute">white-space</span>:nowrap; <span class="attribute">overflow</span>:hidden; <span class="attribute">text-overflow</span>:ellipsis; <span class="attribute">width</span>:<span class="number">100px</span>;&#125;   <span class="comment">/*不换行，超出部分隐藏且以省略号形式出现*/</span></span><br></pre></td></tr></table></figure>
+<p>1.word-break:break-all;   只对英文起作用，以字母作为换行依据</p>
+<p>2.word-wrap:break-word;    只对英文起作用，以单词作为换行依据</p>
+<p>3.{white-space:pre-wrap;    只对中文起作用，强制换行</p>
+<p>4.{white-space:nowrap;    强制不换行，都起作用</p>
+<p>5.{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;   不换行，超出部分隐藏且以省略号形式出现</p>
+<p>注意，一定要指定容器的宽度，不然的话是没有用的。</p>
+<p>注意word-break 是IE5+专有属性</p>
+<p><strong>语法：</strong><br>word-break : normal | break-all | keep-all</p>
+<p><strong>参数：</strong><br>normal : 　依照亚洲语言和非亚洲语言的文本规则，允许在字内换行<br>break-all : 　该行为与亚洲语言的normal相同。也允许非亚洲语言文本行的任意字内断开。该值适合包含一些非亚洲文本的亚洲文本<br>keep-all : 　与所有非亚洲语言的normal相同。对于中文，韩文，日文，不允许字断开。适合包含少量亚洲文本的非亚洲文本</p>
+<p><strong>说明：</strong><br>设置或检索对象内文本的字内换行行为。尤其在出现多种语言时。<br>对于中文，应该使用break-all 。</p>
+<p>部分资料来自网络，如有侵权，联系删除。<strong>转载请注明出处！</strong></p>
 
     </div>
     
@@ -219,15 +227,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/01/25/tools/" class="pre-post btn btn-default" title="tools">
+        <a href="/2019/05/12/js中将字符串转换成json的三种方式/" class="pre-post btn btn-default" title="js中将json字符串转换成json对象的三种方式">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">tools</span>
+            <span class="hidden-xs">js中将json字符串转换成json对象的三种方式</span>
         </a>
     
     
-        <a href="/2019/01/25/test2/" class="next-post btn btn-default" title="test">
+        <a href="/2019/05/12/一些常用的移动端的meta属性设置/" class="next-post btn btn-default" title="一些常用的移动端的meta属性设置">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">test</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">一些常用的移动端的meta属性设置</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -270,7 +278,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS强制英文、中文换行与不换行"><span class="toc-text">CSS强制英文、中文换行与不换行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例说明"><span class="toc-text">示例说明</span></a></li></ol></li></ol>
         
     </div>
 </aside>
@@ -324,5 +332,5 @@
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
 </html>

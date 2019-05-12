@@ -16,11 +16,11 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-    <meta name="keywords" content="doc">
+    <meta name="keywords" content="js">
 
 
-    <meta name="description" content="test
-">
+    <meta name="description" content="JavaScript的各种宽高简介一、DOM对象1、只读属性（1）clientWidth、clientHeight： padding + content ( - scroll宽度 )
+（2）of...">
 
 
 
@@ -32,7 +32,7 @@
     <!--Title-->
 
 
-<title>test3 | 张雷的博客</title>
+<title>JavaScript的各种宽高简介 | 张雷的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="张雷的博客" type="application/atom+xml">
@@ -141,16 +141,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="test3">
+        <h1 id="JavaScript的各种宽高简介">
             
-	            test3
+	            JavaScript的各种宽高简介
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/后端/">后端</a>
+            <a class="category-link" href="/categories/前端/">前端</a>
         </span>
     
 
@@ -159,7 +159,7 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/doc/">doc</a>
+                    <a class="tag-link" href="/tags/js/">js</a>
                 
             </span>
         </span>
@@ -169,7 +169,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/01/25</span>
+            <span class="date-meta">2019/05/12</span>
         </span>
         
     
@@ -179,7 +179,21 @@
     </div>
     
     <div class="post-body post-content">
-        <p>test</p>
+        <h2 id="JavaScript的各种宽高简介"><a href="#JavaScript的各种宽高简介" class="headerlink" title="JavaScript的各种宽高简介"></a>JavaScript的各种宽高简介</h2><h3 id="一、DOM对象"><a href="#一、DOM对象" class="headerlink" title="一、DOM对象"></a>一、DOM对象</h3><h4 id="1、只读属性"><a href="#1、只读属性" class="headerlink" title="1、只读属性"></a>1、只读属性</h4><p>（1）clientWidth、clientHeight： padding + content ( - scroll宽度 )</p>
+<p>（2）offsetWidth、offsetHeight：padding + content + border</p>
+<p>（3）clientTop、clientLeft：border的top、border的left</p>
+<p>（4）offsetTop、offsetLeft：相对于其offsetParent上边距离、左边距离<br>            概念：offsetParent是指一直往上找，第一个具有定位的父级元素</p>
+<p>（5）scrollWidth、scrollHeight：padding + content + 不在可视区域的部分</p>
+<h4 id="2、可读可写属性"><a href="#2、可读可写属性" class="headerlink" title="2、可读可写属性"></a>2、可读可写属性</h4><p>（1）scrollTop、scrollLeft：已经被卷上去或移到左边 看不到的部分，返回的是数字</p>
+<p>（2）dom.style.xxx：注意：该值只能得到设置的内联样式的值，返回的是字符串，实际计算后展示的值需要通过window.getComputedStyle($0)（非IE）或 dom.currentstyle 获得</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">页可见区域宽： <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line">网页可见区域高： <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line">网页可见区域宽： <span class="built_in">document</span>.body.offsetWidth (包括边线的宽);</span><br><span class="line">网页可见区域高： <span class="built_in">document</span>.body.offsetHeight (包括边线的宽);</span><br><span class="line">网页正文全文宽： <span class="built_in">document</span>.body.scrollWidth;</span><br><span class="line">网页正文全文高： <span class="built_in">document</span>.body.scrollHeight;</span><br><span class="line">网页被卷去的高： <span class="built_in">document</span>.body.scrollTop;</span><br><span class="line">网页被卷去的左： <span class="built_in">document</span>.body.scrollLeft;</span><br><span class="line">网页正文部分上： <span class="built_in">window</span>.screenTop;</span><br><span class="line">网页正文部分左： <span class="built_in">window</span>.screenLeft;</span><br><span class="line">屏幕分辨率的高： <span class="built_in">window</span>.screen.height;</span><br><span class="line">屏幕分辨率的宽： <span class="built_in">window</span>.screen.width;</span><br><span class="line">屏幕可用工作区高度： <span class="built_in">window</span>.screen.availHeight;</span><br></pre></td></tr></table></figure>
+<h3 id="二、Event事件"><a href="#二、Event事件" class="headerlink" title="二、Event事件"></a>二、Event事件</h3><p>以下属性的获取：event.xx</p>
+<p>（1）clientX、clientY：事件发生时，鼠标距离浏览器左上角(0,0)的距离</p>
+<p>（2）screenX、screenY：事件发生时，鼠标距离屏幕左上角的距离</p>
+<p>（3）offsetX、offsetY：事件发生时，鼠标距离该dom左上角的距离</p>
+<p>（4）pageX、pageY：事件发生时，鼠标距离页面左上角的距离。若未出现滚动条，则与clientX、clientY相等</p>
+<p>参考：<a href="https://segmentfault.com/a/1190000002545307" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002545307</a></p>
+<p>部分资料来自网络，如有侵权，联系删除。<strong>转载请注明出处！</strong></p>
 
     </div>
     
@@ -217,15 +231,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/01/25/test2/" class="pre-post btn btn-default" title="test">
+        <a href="/2019/05/12/JavaScript的各种宽高详解/" class="pre-post btn btn-default" title="JavaScript的各种宽高详解">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">test</span>
+            <span class="hidden-xs">JavaScript的各种宽高详解</span>
         </a>
     
     
-        <a href="/2019/01/25/resume/" class="next-post btn btn-default" title="我的简历">
+        <a href="/2019/05/12/form表单提交方式/" class="next-post btn btn-default" title="form表单提交方式">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">我的简历</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">form表单提交方式</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -268,7 +282,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript的各种宽高简介"><span class="toc-text">JavaScript的各种宽高简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、DOM对象"><span class="toc-text">一、DOM对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、只读属性"><span class="toc-text">1、只读属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、可读可写属性"><span class="toc-text">2、可读可写属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、Event事件"><span class="toc-text">二、Event事件</span></a></li></ol></li></ol>
         
     </div>
 </aside>
@@ -322,5 +336,5 @@
 
 <script src="/js/app.js?rev=@@hash"></script>
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
 </html>

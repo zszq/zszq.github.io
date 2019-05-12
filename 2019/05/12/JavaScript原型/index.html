@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="张雷的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="js">
+
+
+    <meta name="description" content="JavaScript原型构造函数 就是与 ‘new’ 运算符一起使用用来创建对象并初始化对象的‘函数’。实例化对象 就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。1234567fu...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>JavaScript原型 | 张雷的博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="张雷的博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="./favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="zszq">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> 实现技术的弯道超车 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">张雷的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/简历"><i class="fa "></i>一份简历</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JavaScript原型">
+            
+	            JavaScript原型
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/前端/">前端</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/js/">js</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/05/12</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="JavaScript原型"><a href="#JavaScript原型" class="headerlink" title="JavaScript原型"></a>JavaScript原型</h2><h5 id="构造函数-就是与-‘new’-运算符一起使用用来创建对象并初始化对象的‘函数’。"><a href="#构造函数-就是与-‘new’-运算符一起使用用来创建对象并初始化对象的‘函数’。" class="headerlink" title="构造函数 就是与 ‘new’ 运算符一起使用用来创建对象并初始化对象的‘函数’。"></a>构造函数 就是与 ‘new’ 运算符一起使用用来创建对象并初始化对象的‘函数’。</h5><h5 id="实例化对象-就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。"><a href="#实例化对象-就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。" class="headerlink" title="实例化对象 就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。"></a>实例化对象 就是构造函数创建对象由抽象到具体的过程，这个过程就叫<strong>实例化</strong>。</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">// Person构造函数</span></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(); <span class="comment">// Person构造函数创建对象,也可叫做实例化</span></span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(); </span><br><span class="line"><span class="comment">// 原型属性</span></span><br><span class="line">Person.prototype.name = <span class="string">'zhang'</span>;</span><br><span class="line"><span class="comment">// 实例属性</span></span><br><span class="line">person1.name = <span class="string">'z'</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="原型-prototype和proto"><a href="#原型-prototype和proto" class="headerlink" title="原型 prototype和proto"></a>原型 prototype和<em>proto</em></h5><p>构造函数在创建的过程中，系统自动创建出来与构造函数相关联的一个空的对象，可以由 构造函数.prototype来访问到。<br>每个函数都会有一个<strong>prototype</strong>属性，这个属性是一个指针，它默认指向一个Object空对象（称为原型对象），记住只有函数才有,并且通过bind()绑定的也没有。</p>
+<p>这个对象Person.prototype的所有属性和方法，都会被构造函数的实例继承。<br>构造函数的prototype属性（Person.prototype）就是<strong>原型对象</strong>，也就是实例person1和person2的<strong>原型</strong>。</p>
+<p>主流浏览器上在每个对象上(null除外)都支持一个属性,那就是<strong>proto</strong>，这个属性会指向该对象的原型（自身构造函数的prototype即Person.prototype）<br>所以   person1.proto === Person.prototype       true</p>
+<h5 id="constructor属性"><a href="#constructor属性" class="headerlink" title="constructor属性"></a>constructor属性</h5><p><strong>constructor</strong>属性是原型对象Person.prototype的属性，指向这个原型对象所对应的构造函数。<br>Person.prototype.constructor === Person              true</p>
+<p>person1没有.constructor属性，它是通过原型链在原型Person.prtototype上面找到的<br>Person1.constructor === Person              true</p>
+<p><strong>构造函数、原型对象、实例化对象三者的关系：</strong></p>
+<p><img src="https://img-blog.csdn.net/20180516104452773" alt="img"></p>
+<p>##### </p>
+<h5 id="原型链-就是依托proto和prototype连接起来的"><a href="#原型链-就是依托proto和prototype连接起来的" class="headerlink" title="原型链 就是依托proto和prototype连接起来的"></a><strong>原型链</strong> 就是依托<em>proto</em>和prototype连接起来的</h5><p>每一个对象都有自己的原型对象，原型对象本身也是对象，原型对象也有自己的原型对象，这样就形成了一个链式结构，叫做<strong>原型链</strong>。<br>person1对象—–&gt;Person.prototype——-&gt;Object.prototype———&gt;null</p>
+<p>当我们读取一个属性的时候，如果在实例属性上找到了，就读取它，不会管原型属性上是否还有相同的属性，这其实就是属性屏蔽。即当实例属性和原型属性拥有相同名字的时候，实例属性会屏蔽原型属性，记住只是屏蔽，不会修改，原型属性那个值还在。但是如果在实例属性（person1.name）上没有找到的话，就会在实例的原型属性Person.prototype上去找（因为Person.prototype的所有属性和方法，都会被构造函数的实例继承。），如果原型上还没有，就继续到原型的原型上去找。</p>
+<p>假如在原型对象Person.prototype还是没有找到这个属性，还会继续找，<strong>原型对象也是对象</strong>，<strong>所以它也有proto属性</strong>，连接它的原型，原型对象Person.prototype的原型就是Object.prototype，所有原型对象都是Object构造函数生成的。<br>正是因为所有的原型最终都会指向Object.prototype，所以对象的很多方法其实都是继承于此，比如toString()、valueOf()，前面用到的hasOwnProperty，甚至是.constructor、proto。</p>
+<p>Object.prototype没有原型，为null，所以它就是前面所提到的尽头。</p>
+<p>实例 和 原型对象 存在一个连接。不过，要明确的真正重要的一点就是，这个连接存在于实例与构造函数的原型对象之间，而不是存在于实例与构造函数之间。</p>
+<ol>
+<li>检测一个属性存在于实例中，还是原型中，使用方法hasOwnProperty，属性只有存在于实例中才会返回true。<br>person1.hasOwnProperty(‘name’)    实例中有name属性返回 true</li>
+<li>in操作符则会遍历所有属性，不管是实例上的，还是原型上的。in操作符有两种使用方式，单独使用和在for-in循环中使用<br>for in 循环遍历    和    ‘name’ in person1    ture</li>
+<li>Object.keys() 此方法可以获取对象的所有可枚举的属性的名字</li>
+</ol>
+<h5 id="继承-js继承的几种方法-参考链接第二章更详细-："><a href="#继承-js继承的几种方法-参考链接第二章更详细-：" class="headerlink" title="继承  js继承的几种方法(参考链接第二章更详细)："></a>继承  js继承的几种方法(参考链接第二章更详细)：</h5><p>(1). for-in拷贝继承：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;              <span class="comment">//父类  </span></span><br><span class="line">     <span class="keyword">this</span>.name=<span class="string">"水煮鱼"</span>;  </span><br><span class="line">     <span class="keyword">this</span>.age=<span class="number">18</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>)</span>&#123;                 <span class="comment">//子类  </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">var</span> p=<span class="keyword">new</span> Person();  </span><br><span class="line"><span class="keyword">var</span> s=<span class="keyword">new</span> Son();  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> p)&#123;  </span><br><span class="line">    s[k]=p[k];  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="built_in">console</span>.log(s.name);           <span class="comment">//水煮鱼  </span></span><br><span class="line"><span class="built_in">console</span>.log(s.age);            <span class="comment">//18</span></span><br></pre></td></tr></table></figure>
+<p>(2). 原型继承：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Human</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">     <span class="keyword">this</span>.name=<span class="string">"香辣虾"</span>;  </span><br><span class="line">     <span class="keyword">this</span>.age=<span class="number">21</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">&#125;  </span><br><span class="line">Man.prototype=<span class="keyword">new</span> Human();</span><br><span class="line"><span class="keyword">var</span> m=<span class="keyword">new</span> Man();  </span><br><span class="line"><span class="built_in">console</span>.log(m.name);           <span class="comment">//香辣虾  </span></span><br><span class="line"><span class="built_in">console</span>.log(m.age);            <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+<p>(3). 经典继承：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animal=&#123;  </span><br><span class="line">      name:<span class="string">"阿咪"</span>,  </span><br><span class="line">      type:<span class="string">"猫科"</span>  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">var</span> a=<span class="built_in">Object</span>.create(animal)    <span class="comment">//ES5属性  </span></span><br><span class="line"><span class="built_in">console</span>.log(a.name);           <span class="comment">//阿咪  </span></span><br><span class="line"><span class="built_in">console</span>.log(a.type);           <span class="comment">//猫科</span></span><br></pre></td></tr></table></figure>
+<p>Object.create()是让一个对象的原型继承另外一个对象；所以虽然a.name和a.age是可以访问成功的，但实际上a本身并没有这些属性，而是a的原型上有这些属性。</p>
+<p>完整原型链：</p>
+<p><img src="https://img-blog.csdn.net/20180516105049266?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE0MzU3NzY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<p>难点：<br>1.Function构造函数可以用Function.<strong>proto</strong>来访问Function.prototype. 这是因为Function构造函数的构造函数是他本身，作为实例化对象的角色来访问，可行。<br>2.任何函数都是函数，他都继承Function的所有属性和方法，而Function是内置的构造函数，也是对象，都是继承Object的所有属性和方法。</p>
+<p>推荐学习笔记：</p>
+<p>初学必看：<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">Javascript 面向对象编程      http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html</a></p>
+<p><a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank" rel="noopener">深入理解javascript原型和闭包（完结）      https://www.cnblogs.com/wangfupeng1988/p/3977924.html</a></p>
+<p>部分资料来自网络，如有侵权，联系删除。<strong>转载请注明出处！</strong></p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+                <span class="reward-type">
+                    <img class="alipay" src="/img/reward-alipay300x300.jpg"><b>支付宝打赏</b>
+                </span>
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/reward-wechat300x300.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">赞赏是不耍流氓的鼓励</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="tencent://message/?uin=1217052251&Site=blog&Menu=yes" target="_blank">zszq</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/05/12/javascript数组去重10种方法/" class="pre-post btn btn-default" title="javascript数组去重的10种方法">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">javascript数组去重的10种方法</span>
+        </a>
+    
+    
+        <a href="/2019/05/12/JavaScript的各种宽高详解/" class="next-post btn btn-default" title="JavaScript的各种宽高详解">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">JavaScript的各种宽高详解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: '01wLsc0KBEM6T8k7v1kJRv3l-gzGzoHsz',
+            appKey: 'VhIDfwEQSpGRWvd8z5tDViJ9',
+            placeholder: '有什么问题请给我留言',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript原型"><span class="toc-text">JavaScript原型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#构造函数-就是与-‘new’-运算符一起使用用来创建对象并初始化对象的‘函数’。"><span class="toc-text">构造函数 就是与 ‘new’ 运算符一起使用用来创建对象并初始化对象的‘函数’。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实例化对象-就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。"><span class="toc-text">实例化对象 就是构造函数创建对象由抽象到具体的过程，这个过程就叫实例化。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原型-prototype和proto"><span class="toc-text">原型 prototype和proto</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#constructor属性"><span class="toc-text">constructor属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原型链-就是依托proto和prototype连接起来的"><span class="toc-text">原型链 就是依托proto和prototype连接起来的</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#继承-js继承的几种方法-参考链接第二章更详细-："><span class="toc-text">继承  js继承的几种方法(参考链接第二章更详细)：</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2019.1.24
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
